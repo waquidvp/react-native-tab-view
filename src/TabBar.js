@@ -201,9 +201,11 @@ export default class TabBar<T: *> extends React.Component<Props<T>, State> {
         style={[
           styles.indicator,
           { width, transform: [{ translateX }] },
-          this.props.indicatorStyle,
+          this.props.indicatorStyle.height,
         ]}
-      />
+      >
+        <View style={this.props.indicatorStyle} />
+      </Animated.View>
     );
   };
 
@@ -539,11 +541,9 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
   indicator: {
-    backgroundColor: '#ffeb3b',
     position: 'absolute',
     left: 0,
     bottom: 0,
     right: 0,
-    height: 2,
   },
 });
