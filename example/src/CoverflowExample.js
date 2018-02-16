@@ -38,7 +38,6 @@ const initialLayout = {
 
 export default class CoverflowExample extends React.Component<*, State> {
   static title = 'Coverflow';
-  static backgroundColor = '#000';
   static appbarElevation = 0;
 
   state = {
@@ -122,7 +121,7 @@ export default class CoverflowExample extends React.Component<*, State> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: '#222',
   },
   page: {
     flex: 1,

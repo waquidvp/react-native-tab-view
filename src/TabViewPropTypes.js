@@ -23,7 +23,7 @@ export const SceneRendererPropType = {
   }).isRequired,
   navigationState: NavigationStatePropType.isRequired,
   position: PropTypes.object.isRequired,
-  jumpTo: PropTypes.func.isRequired,
+  jumpToIndex: PropTypes.func.isRequired,
   useNativeDriver: PropTypes.bool,
 };
 
@@ -37,7 +37,7 @@ export const PagerRendererPropType = {
   panX: PropTypes.instanceOf(Animated.Value).isRequired,
   offsetX: PropTypes.instanceOf(Animated.Value).isRequired,
   canJumpToTab: PropTypes.func.isRequired,
-  jumpTo: PropTypes.func.isRequired,
+  jumpToIndex: PropTypes.func.isRequired,
   animationEnabled: PropTypes.bool,
   swipeEnabled: PropTypes.bool,
   useNativeDriver: PropTypes.bool,

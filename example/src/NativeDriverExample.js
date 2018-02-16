@@ -6,11 +6,8 @@ import {
   TabViewAnimated,
   TabBar,
   TabViewPagerExperimental,
-  SceneMap,
 } from 'react-native-tab-view';
-import Albums from './shared/Albums';
-import Article from './shared/Article';
-import Chat from './shared/Chat';
+import SimplePage from './SimplePage';
 
 import type { Route, NavigationState } from 'react-native-tab-view/types';
 
@@ -27,16 +24,15 @@ const initialLayout = {
 };
 
 export default class NativeDriverExample extends React.Component<*, State> {
-  static title = 'Native animations';
-  static backgroundColor = '#f44336';
+  static title = 'With native animations';
   static appbarElevation = 0;
 
   state = {
     index: 1,
     routes: [
-      { key: 'article', title: 'Article' },
-      { key: 'albums', title: 'Albums' },
-      { key: 'chat', title: 'Chat' },
+      { key: '1', title: 'First' },
+      { key: '2', title: 'Second' },
+      { key: '3', title: 'Third' },
     ],
   };
 
@@ -46,14 +42,48 @@ export default class NativeDriverExample extends React.Component<*, State> {
     });
 
   _renderHeader = props => (
-    <TabBar {...props} style={styles.tabbar} labelStyle={styles.label} />
+    <TabBar
+      {...props}
+      indicatorStyle={styles.indicator}
+      style={styles.tabbar}
+      labelStyle={styles.label}
+    />
   );
 
-  _renderScene = SceneMap({
-    article: Article,
-    albums: Albums,
-    chat: Chat,
-  });
+  _renderScene = ({ route }) => {
+    switch (route.key) {
+      case '1':
+        return (
+          <SimplePage
+            state={this.state}
+            style={{ backgroundColor: '#ff4081' }}
+          />
+        );
+      case '2':
+        return (
+          <SimplePage
+            state={this.state}
+            style={{ backgroundColor: '#673ab7' }}
+          />
+        );
+      case '3':
+        return (
+          <SimplePage
+            state={this.state}
+            style={{ backgroundColor: '#4caf50' }}
+          />
+        );
+      case '4':
+        return (
+          <SimplePage
+            state={this.state}
+            style={{ backgroundColor: '#2196f3' }}
+          />
+        );
+      default:
+        return null;
+    }
+  };
 
   _renderPager = props => <TabViewPagerExperimental {...props} />;
 
@@ -78,7 +108,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   tabbar: {
-    backgroundColor: '#f44336',
+    backgroundColor: '#222',
+  },
+  indicator: {
+    backgroundColor: '#ffeb3b',
   },
   label: {
     color: '#fff',

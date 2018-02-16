@@ -92,10 +92,8 @@ export default class TabViewPagerScroll<T: *> extends React.Component<
       e.nativeEvent.contentOffset.x / this.props.layout.width
     );
 
-    const nextRoute = this.props.navigationState.routes[nextIndex];
-
-    if (this.props.canJumpToTab(nextRoute)) {
-      this.props.jumpTo(nextRoute.key);
+    if (this.props.canJumpToTab(this.props.navigationState.routes[nextIndex])) {
+      this.props.jumpToIndex(nextIndex);
     } else {
       global.requestAnimationFrame(() => {
         this._scrollTo(

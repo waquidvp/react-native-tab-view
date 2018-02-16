@@ -201,11 +201,9 @@ export default class TabBar<T: *> extends React.Component<Props<T>, State> {
         style={[
           styles.indicator,
           { width, transform: [{ translateX }] },
-          this.props.indicatorStyle.height,
+          this.props.indicatorStyle,
         ]}
-      >
-        <View style={this.props.indicatorStyle} />
-      </Animated.View>
+      />
     );
   };
 
@@ -236,7 +234,7 @@ export default class TabBar<T: *> extends React.Component<Props<T>, State> {
 
   _handleTabPress = (scene: Scene<*>) => {
     this._pendingIndex = scene.index;
-    this.props.jumpTo(scene.route.key);
+    this.props.jumpToIndex(scene.index);
     if (this.props.onTabPress) {
       this.props.onTabPress(scene);
     }
@@ -541,9 +539,11 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
   indicator: {
+    backgroundColor: '#ffeb3b',
     position: 'absolute',
     left: 0,
     bottom: 0,
     right: 0,
+    height: 2,
   },
 });

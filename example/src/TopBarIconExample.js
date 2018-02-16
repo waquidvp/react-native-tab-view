@@ -3,10 +3,8 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
-import Article from './shared/Article';
-import Chat from './shared/Chat';
-import Contacts from './shared/Contacts';
+import { TabViewAnimated, TabBar } from 'react-native-tab-view';
+import SimplePage from './SimplePage';
 
 import type { Route, NavigationState } from 'react-native-tab-view/types';
 
@@ -19,15 +17,14 @@ type State = NavigationState<
 
 export default class TopBarIconExample extends React.Component<*, State> {
   static title = 'Icon only top bar';
-  static backgroundColor = '#e91e63';
   static appbarElevation = 0;
 
   state = {
     index: 0,
     routes: [
-      { key: 'chat', icon: 'md-chatbubbles' },
-      { key: 'contacts', icon: 'md-contact' },
-      { key: 'article', icon: 'md-list' },
+      { key: '1', icon: 'md-restaurant' },
+      { key: '2', icon: 'md-bicycle' },
+      { key: '3', icon: 'md-color-palette' },
     ],
   };
 
@@ -51,11 +48,33 @@ export default class TopBarIconExample extends React.Component<*, State> {
     );
   };
 
-  _renderScene = SceneMap({
-    chat: Chat,
-    contacts: Contacts,
-    article: Article,
-  });
+  _renderScene = ({ route }) => {
+    switch (route.key) {
+      case '1':
+        return (
+          <SimplePage
+            state={this.state}
+            style={{ backgroundColor: '#ff4081' }}
+          />
+        );
+      case '2':
+        return (
+          <SimplePage
+            state={this.state}
+            style={{ backgroundColor: '#673ab7' }}
+          />
+        );
+      case '3':
+        return (
+          <SimplePage
+            state={this.state}
+            style={{ backgroundColor: '#4caf50' }}
+          />
+        );
+      default:
+        return null;
+    }
+  };
 
   render() {
     return (
@@ -75,7 +94,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   tabbar: {
-    backgroundColor: '#e91e63',
+    backgroundColor: '#222',
   },
   indicator: {
     backgroundColor: '#ffeb3b',

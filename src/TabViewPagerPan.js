@@ -212,8 +212,7 @@ export default class TabViewPagerPan<T: *> extends React.Component<Props<T>> {
       }),
     ]).start(({ finished }) => {
       if (finished) {
-        const route = this.props.navigationState.routes[index];
-        this.props.jumpTo(route.key);
+        this.props.jumpToIndex(index);
         this._pendingIndex = null;
       }
     });

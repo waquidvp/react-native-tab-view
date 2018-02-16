@@ -90,10 +90,8 @@ export default class TabViewPagerAndroid<T: *> extends React.Component<
 
     let nextIndex = this._currentIndex;
 
-    const nextRoute = this.props.navigationState.routes[nextIndex];
-
-    if (this.props.canJumpToTab(nextRoute)) {
-      this.props.jumpTo(nextRoute.key);
+    if (this.props.canJumpToTab(this.props.navigationState.routes[nextIndex])) {
+      this.props.jumpToIndex(nextIndex);
     } else {
       this._setPage(this.props.navigationState.index);
       this._currentIndex = this.props.navigationState.index;

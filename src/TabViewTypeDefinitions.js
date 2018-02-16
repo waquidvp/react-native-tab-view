@@ -30,7 +30,7 @@ export type SceneRendererProps<T> = {
   panX: Animated.Value,
   offsetX: Animated.Value,
   position: any,
-  jumpTo: (key: string) => void,
+  jumpToIndex: (index: number) => void,
   useNativeDriver: boolean,
 };
 
@@ -42,7 +42,7 @@ export type PagerRendererProps<T> = {
   panX: Animated.Value,
   offsetX: Animated.Value,
   canJumpToTab: (route: T) => boolean,
-  jumpTo: (key: string) => void,
+  jumpToIndex: (index: number) => void,
   useNativeDriver: boolean,
   animationEnabled?: boolean,
   swipeEnabled?: boolean,
